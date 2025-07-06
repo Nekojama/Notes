@@ -26,21 +26,21 @@ Git官网下载地址:[https://git-scm.com/downloads](https://git-scm.com/downlo
 GitHub注册完毕后,如果你还没有打开Git Bash页面,那么首先在Windows的搜索页面搜索"Git Bash",然后打开即可.我们接下来开始创建并认证SSH.
 - 3.1 **检查SSH**
 此时你的电脑应该还没有创建SSH.但以防万一,在GIt Bash内输入:
-  ```
+```
 cd ~./ssh
-  ```
+```
 这是一条跳转到地址以`/ssh`结尾的文件或文件夹的代码.随后,应该会弹出`no such file or directory`,表明电脑上确实没有SSH.
 
 - 3.2 **创建SSH**
 接下来,在GIt Bash内输入:
-  ```
+```
 ssh-keygen -t ed25519 -C "[注册Git时使用的邮箱]"
-  ```
+```
 然后按三次`enter`以启用默认设置.这条代码会使用ed25519(基于椭圆曲线的加密方案)生成一串SSH,随后你应该能在`C/Users/[你的用户名]/.ssh`处找到两个分别名为`id_ed25519`和`id_ed25519.pub`的文件.或者,也可以将`ed25519`替换为`rsa`,采取RSA(基于大数分解)的方案生成SSH.
 `id_ed25519`是私钥,不能公开.而`id_ed25519.pub`是公钥,用记事本打开,复制里面的密钥.或者,在Git Bash内使用
-  ```
+```
 cat ~/.ssh/id_ed25519.pub | clip
-  ```
+```
 以直接将公钥复制到剪贴板.
 
 - 3.3 **添加SSH**
@@ -48,15 +48,15 @@ cat ~/.ssh/id_ed25519.pub | clip
 
 - 3.4 **确认SSH与配置用户名与邮箱**
 首先在Git Bash内输入:
-  ```
+```
 ssh -T git@github.com
-  ```
+```
 然后输入`yes`.如果出现`Hi! [你GitHub的用户名]`,那么就说名我们的SSH绑定成功了.
 随后我们需要输入
-  ```
+```
 it -config --global user.name"[你想使用的用户名]"
 git -config --global user.email"[你GitHub注册时使用的邮箱]"
-  ```
+```
 来配置user.name和user.email.这将会成为你上传文件到GitHub后的身份标识.
 
 4. **创建Repository**
