@@ -23,14 +23,14 @@
 	**SSH**(Secure Shell)是一种用于在不安全的网络上进行安全通信的网络协议.而为了我们能够顺利地把文件上传到Github,我们需要给Github提供SSH密钥.
 	
 	GitHub注册完毕后,如果你还没有打开Git Bash页面,那么首先在Windows的搜索页面搜索"Git Bash",然后打开即可.我们接下来开始创建并认证SSH.
-- 3.1 **检查SSH**
+- 3.1 **检查SSH**  
 	此时你的电脑应该还没有创建SSH.但以防万一,在GIt Bash内输入:
 	```bash
 	cd ~./ssh
 	```
 	这是一条跳转到地址以`/ssh`结尾的文件或文件夹的代码.随后,应该会弹出`no such file or directory`,表明电脑上确实没有SSH.
 
-- 3.2 **创建SSH**
+- 3.2 **创建SSH**  
 	接下来,在GIt Bash内输入:
 	```bash
 	ssh-keygen -t ed25519 -C "[注册Git时使用的邮箱]"
@@ -42,10 +42,10 @@
 	```
 	以直接将公钥复制到剪贴板.
 
-- 3.3 **添加SSH**
+- 3.3 **添加SSH**  
 	进入Github首页.随后以`头像->Settings->SSH and GPG keys->New SSH Key`顺序操作,在Title处随便填个名字,在Key处粘贴密钥后点击`Add SSH Key`即可.
 
-- 3.4 **确认SSH与配置用户名与邮箱**
+- 3.4 **确认SSH与配置用户名与邮箱**  
 	首先在Git Bash内输入:
 	```bash
 	ssh -T git@github.com
@@ -58,15 +58,14 @@
 	```
 	来配置user.name和user.email.这将会成为你上传文件到GitHub后的身份标识.
 
-4. **创建Repository**
-
+4. **创建Repository**  
 	这是最简单的一步."Repository",即仓库的创建只需来到GitHub首页,然后点击"+",选择"New repository"即可.至于仓库名(Repository name),仓库的描述(description),仓库是否公开(Public/Private),是否需要readme文件,按需填写/选择即可.
 
 ---
 
 ### 第二阶段：本地仓库初始化
 虽然我们到现在终于配置完了GitHub的云端仓库,但是不要忘记我们的目的:将笔记上传到云端.为此,我们需要在本地设立一个特别的存储路径,以便将这个路径内的文件上传到GitHub.
- 1. **创建本地笔记目录**
+ 1. **创建本地笔记目录**  
 	 依然,在GIt Bash内输入:
 	```bash
 	mkdir -p ~/Documents/Github/Notes && cd ~/Documents/Github/Notes
@@ -80,21 +79,21 @@
 	```
 	这会将`Notes`文件夹初始化为Git仓库,具体表现为:当你开启显示隐藏的文件后,可在`Notes`处发现一个名为`.git`的文件夹.
 
-3. **关联远程仓库**
+3. **关联远程仓库**  
 	然后我们要做的就是把本地文件夹和云端仓库关联起来即可.输入:
 	```bash
 	git remote add origin git@github.com:[你GitHub的用户名]/Notes.git
 	```
 	这样,我们就创建了一个可以同步到云端的仓库了!
 
-4. **创建基础结构**(可选)
+4. **创建基础结构**(可选)  
 	如果你需要在`Notes`内创建子文件夹以区分文件,手动右键添加,或在`cd`后使用:
 	```bash
 	mkdir [文件夹名字]
 	```
 	即可.
 
-5. **添加忽略规则(防止同步临时文件)**
+5. **添加忽略规则(防止同步临时文件)**  
 	考虑到GItHub每个仓库最多只有1GB的容量,并且文件多了不方便管理,我们需要让Git忽略同步临时文件.具体来说,依然在`Notes`处使用Git Bash输入:
 	```bash
 	echo "*.tmp" >> .gitignore
@@ -105,14 +104,14 @@
 
 ### 第三阶段：首次上传笔记
 下面,我们假设Downloads地址处有一个名为"算法笔记.pdf"的文件(开启查看文件拓展名).
-1. **复制笔记到对应文件夹**
+1. **复制笔记到对应文件夹**  
 	手动复制,或者在Git Bash内输入:
 	```bash
 	cp ~/Downloads/算法笔记.pdf ~/Documents/Github/Notes
 	```
 	即可将"算法笔记.pdf"复制到GitHub本地仓库.
 
-2. **添加所有文件到暂存区**
+2. **添加所有文件到暂存区**  
 	首先确保Git Bash此时地址位于`~/Github/Notes`.具体操作为在Git Bash输入
 	```bash
 	cd ~/Documents/Github/Notes
@@ -124,14 +123,14 @@
 	```
 	注意:`.`不能省略,这表明我们将上传**所有文件**.
 
-3. **创建首次提交**
+3. **创建首次提交**  
 	在Git Bash内输入:
 	```bash
 	git commit -m "初始提交：添加全部笔记"
 	```
 	即可创建首次提交.其中"-m"是你这次提交的具体描述.这是你提交的文件的重要标识.
 
-4. **推送到云端**
+4. **推送到云端**  
 	随后,输入:
 	```bash
 	git push -u origin main
@@ -143,7 +142,7 @@
 ### 第四阶段：日常维护
 前面所有的配置完毕后,我们接下来只需享受GitHub给我们带来的便利即可.
 下面是我们对笔记进行日常维护的步骤.
-1. **创建cd的别名**
+1. **创建cd的别名**  
 	首先我们为`cd ~/Documents/Github/Notes`这个命令添加一个alias以方便操作.
 	在Git Bash内,输入:
 	```bash
@@ -154,20 +153,21 @@
 	alias cd-main='cd ~/Documents/Github/Notes'
 	```
 	这将创造一个`cd-main`作为`cd ~/Documents/Github/Notes`的快捷调用方式.接下来按`ctrl+x`退出并保存即可.
- 2. **进入笔记目录**
+
+ 2. **进入笔记目录**  
 	 打开Git Bash,输入:
 	```bash
 	cd-main
 	```
 	或者手动跳转.
 
-3. **添加所有更新**
+3. **添加所有更新**  
 	不要忘记这一步.这是由于Git的特性决定的,我们得先创建一个文件的暂存区.
 	```bash
 	git add .
 	```
 
-4. **提交并推送**
+4. **提交并推送**  
 	随后,只需要输入:
 	```bash
 	git commit -m "更新笔记" && git push
