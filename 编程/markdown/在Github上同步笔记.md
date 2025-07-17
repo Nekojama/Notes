@@ -1,3 +1,25 @@
+<div class="printable-title-container">
+
+```dataviewjs
+const repoUrl = "https://github.com/Nekojama/Notes";
+const fileName = dv.current().file.name;
+const mtime = dv.current().file.mtime.toFormat("yy-MM-dd");
+const fullHtml = `
+<div class="printable-title-container">
+  <h1 class="printable-title">${fileName}</h1>
+  <div class="custom-divider"></div>
+  <a href="${repoUrl}" target="_blank" class="printable-version-info">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    <span>检查更新</span>
+    <span class="version-date-badge">${mtime}</span>
+  </a>
+</div>
+`;
+dv.paragraph(fullHtml);
+```
+
+</div>
+
 当你写了一篇笔记,兴冲冲地发出去之后才发现笔记有错需要更改,而你又拉不下面子的时候,你该怎么做?或者,你想要把笔记保存在云端,以防止意外事件发生(比如水倒在键盘上)时,你又会怎么做?这两个让人很头疼的问题只需要一个工具就可以解决,那就是**GitHub**.
 >[!faq] 什么是GitHub?
 **GitHub**是世界上最大的**代码托管平台**.自然,它也可以当做普通文件的云盘使用.
