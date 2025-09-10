@@ -40,7 +40,7 @@ dv.paragraph(fullHtml);
 	我们在这里选用シーズ的Monochromatic作为例子.
 2. **将HTML代码进行些许修改**
 	 此时你得到的代码应该是这样的(为了美观做了排版):
-	 ```html
+	```html
 	 <iframe 
 	 frameborder="no" 
 	 border="0" 
@@ -48,7 +48,7 @@ dv.paragraph(fullHtml);
 	 marginheight="0" 
 	 width=330 
 	 height=86 
-	 src="//music.163.com/outchain/player?type=2&id=2635627532&auto=1&height=66">
+	 src="​//music.163.com/outchain/player?type=2&id=2635627532&auto=1&height=66">
 	 </iframe>
 	```
 	如果你尝试直接将这个代码复制到Obsidian中使用,那么就会出现播放器不显示的问题.这是因为 `src` 使用协议相对路径 `//music.163.com/...`,在本地文件环境(`file://` 协议)下会被解析为 `file://music.163.com`,这显然是无效的.
@@ -62,7 +62,7 @@ dv.paragraph(fullHtml);
 	|`border`|"0"|边框宽度为0|
 	|`marginwidth`|"0"|内容与边框左右无间距|
 	|`marginheight`|"0"|内容与边框上下无间距|
-	|`src`|[URL](//music.163.com/outchain/player?type=2&id=2635627532&auto=1&height=66)|嵌入内容的资源地址|
+	|`src`|<span style="color: var(--text-accent);" title="//music.163.com/outchain/player?type=2&id=2635627532&auto=1&height=66">URL</span>|嵌入内容的资源地址|
 	然后是我们的外链的属性:
 	
 	|参数|值|说明|
@@ -72,7 +72,7 @@ dv.paragraph(fullHtml);
 	|`auto`|1|自动播放|
 	|`height`|66|播放器内部高度（像素）|
 	
-	首先,我们应该在URL前添上`https:`,以使其成为网页的地址:`http://music.163.com/outchain/player?type=2&id=2635627532&auto=1&height=66`.在浏览器里打开[修改好的地址](http://music.163.com/outchain/player?type=2&id=2635627532&auto=1&height=66),如果能正常播放,我们就成功了99%了.接下来是一些易用性的更改:
+	首先,我们应该在URL前添上`https:`,以使其成为网页的地址:`https://music.163.com/outchain/player?type=2&id=2635627532&auto=1&height=66`.在浏览器里打开[修改好的地址](http://music.163.com/outchain/player?type=2&id=2635627532&auto=1&height=66),如果能正常播放,我们就成功了99%了.接下来是一些易用性的更改:
 	- 添加`style="display: block;"`到代码中,这会使得播放器与文字间距缩小.
 	- 将`auto=1`更改为`auto=0`,实现不自动播放.这样做是因为Obsidian的编辑模式和阅览模式是分开的,打开自动播放会导致重复的情况.
 	
@@ -95,7 +95,7 @@ dv.paragraph(fullHtml);
 [4K HDR「SOS」(黛冬優子 solo)【偶像大师闪耀色彩 Song for Prism MV】](https://www.bilibili.com/video/BV1vC4y1M7aS/?share_source=copy_web&vd_source=aa9b1263fec292f540c16325a7886838).(如有侵权我会删除)
 <iframe 
   src="https://player.bilibili.com/player.html?isOutside=true&aid=750097381&bvid=BV1vC4y1M7aS&cid=1374646097&p=1&autoplay=false" 
-  width="800" 
+  width="725" 
   height="450" 
   scrolling="no" 
   border="0" 
